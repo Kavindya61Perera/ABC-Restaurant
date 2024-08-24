@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+	<body background="Image/bc2.jpg">
+        <header>
+            <div class="logo">
+                <img src="Image/logo.jfif" alt="ABC Restaurant Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li class="dropdown">
+                        <a href="#">Our Specialities &#9662;</a>
+                        <ul class="dropdown-content">
+                            <li><a href="service.html">Services</a></li>
+                            <li><a href="facility.html">Facilities</a></li>
+                            <li><a href="f&b.html">Food & Beverages</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-buttons">
+                <button class="offer-button" onclick="goToOfferPage('offers.html')">Offers</button>
+                <button class="login-button" onclick="goTologinPage('login.html')" ><i class="fa-solid fa-user"></i> 
+                  <span>Login</span>
+                </button>
+            </div>
+        </header>
+
+		<div class="login">
+			<h1>Login</h1>
+			<form name="login" action="userlogin.php" method="post" onSubmit="return formValidation();">
+				<label for="User_name">
+					<i class="fas fa-user"></i>
+				</label>
+				<input type="text" name="User_name" placeholder="Username" id="User_name" >
+				<label for="Password">
+					<i class="fas fa-lock"></i>
+				</label>
+				<input type="password" name="Password" placeholder="Password" id="Password" >
+				<input type="submit" name="submit" value="Login">
+
+                <p>Not registered? <a href="register.html">Register</a></p>
+                <p id="error-message" style="color: red;"></p>
+			</form>
+		</div>
+	</body>
+
+    <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <h4>ABC Restaurant</h4>
+            <p>Our purpose is to serve the best food in town.</p>
+          </div>
+          <div class="footer-right">
+            <div class="quick-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="service.html"></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="contact-info">
+              <h4>Contact Information</h4>
+              <p><strong>Opening Hours:</strong> Mon-Fri 10:00 AM - 10:00 PM</p>
+              <p><strong>Location:</strong> 123 Main Street, Colombo</p>
+              <p><strong>Phone:</strong> +94 123 456 789</p>
+              <p><strong>Email:</strong> info@abcrestaurant.lk</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>© 2024 ABC Restaurant. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+    <script type="text/javascript">
+        function formValidation()
+      {
+      var User_name = document.login.User_name;
+      var Password = document.login.Password;
+      
+      
+      if(Emptyfield(User_name,Password))
+      {
+        if(allLetter(User_name))
+          {
+              if(allLetter(Password))
+              { 
+            return true;
+          }
+        }
+      }
+      return false;
+      }
+        function Emptyfield(User_name,Password)
+      { 
+      var U_Name_len = User_name.value.length;
+      var Password_len = Password.value.length;
+      
+      
+      if (U_Name_len == 0 || Password_len == 0)
+      {
+      alert("Fields should not be empty ");
+      return false;
+      }
+      else
+      {
+      return true;
+      }
+      }
+      
+
+
+
+       
+      function goToOfferPage(page) {
+          window.location.href = page;
+      }
+
+      function goTologinPage(page) {
+          window.location.href = page;
+      }
+
+      </script>
+
+</html>

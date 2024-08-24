@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABC Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body background="Image/tt.jpg" >
+    <header>
+        <div class="logo">
+            <img src="Image/logo.jfif" alt="ABC Restaurant Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li class="dropdown">
+                    <a href="#">Our Specialities &#9662;</a>
+                    <ul class="dropdown-content">
+                        <li><a href="service.html">Services</a></li>
+                        <li><a href="facility.html">Facilities</a></li>
+                        <li><a href="f&b.html">Food & Beverages</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="nav-buttons">
+          <button class="offer-button" onclick="goToOfferPage('offers.html')">Offers</button>
+          <button class="login-button" onclick="goTologinPage('login.html')" ><i class="fa-solid fa-user"></i> 
+            <span>Login</span>
+          </button>
+      </div>
+    </header>
+    
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search...">
+      <button class="search-button"><i class="fa-solid fa-search"></i></button>
+  </div>
+  
+    <main>
+      <section class="service-intro">
+          <h1>Our Services</h1>
+          <p>At ABC Restaurant, we offer a range of services to ensure you have a memorable dining experience. Whether you're looking for a special event space or want to enjoy our exquisite dishes at home, we have you covered.</p>
+      </section>
+      <section class="service-list">
+        <div class="service-item">
+          <img src="Image/Dine_In.jpg" alt="Event Hosting">
+          <h2>Dine - In</h2>
+          <p>Our restaurant provides the perfect venue for Dine - in. With a spacious dining area and elegant decor, we ensure a delightful experience for you and your guests.</p>
+      </div>
+          <div class="service-item">
+              <img src="Image/Home_Delivery.jpg" alt="Home Delivery">
+              <h2>Home Delivery</h2>
+              <p>Enjoy our delicious dishes from the comfort of your home with our efficient home delivery service. Simply place your order online, and we'll deliver your meal right to your doorstep.</p>
+          </div>
+          <div class="service-item">
+            <img src="Image/Event_Catering.jpg">
+            <h2>Event Catering</h2>
+            <p>Let us make your special event unforgettable with our premium catering services. From corporate gatherings to private parties, we offer customized menus and exceptional service.</p>
+        </div>
+          <div class="service-item">
+            <img src="Image/Home_Delivery.jpg" alt="Home Delivery">
+            <h2>Home Delivery</h2>
+            <p>Enjoy our delicious dishes from the comfort of your home with our efficient home delivery service. Simply place your order online, and we'll deliver your meal right to your doorstep.</p>
+        </div>
+        <div class="service-item">
+          <img src="Image/bc4.jpg" alt="Event Hosting">
+          <h2>Event Hosting</h2>
+          <p>Our restaurant provides the perfect venue for hosting events. With a spacious dining area and elegant decor, we ensure a delightful experience for you and your guests.</p>
+      </div>
+        <div class="service-item">
+            <img src="Image/Dine_In.jpg" alt="Event Hosting">
+            <h2>Event Hosting</h2>
+            <p>Our restaurant provides the perfect venue for hosting events. With a spacious dining area and elegant decor, we ensure a delightful experience for you and your guests.</p>
+        </div>
+          <div class="service-item">
+            <img src="Image/Private_Event.jpg" alt="Private Dining">
+            <h2>Private Dining</h2>
+            <p>Enjoy an intimate dining experience with our private dining options. Perfect for special occasions or business meetings, our private rooms offer a personalized and exclusive atmosphere.</p>
+        </div>
+      </section>
+  </main>
+
+    <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <h4>ABC Restaurant</h4>
+            <p>Our purpose is to serve the best food in town.</p>
+          </div>
+          <div class="footer-right">
+            <div class="quick-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="service.html"></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="contact-info">
+              <h4>Contact Information</h4>
+              <p><strong>Opening Hours:</strong> Mon-Fri 10:00 AM - 10:00 PM</p>
+              <p><strong>Location:</strong> 123 Main Street, Colombo</p>
+              <p><strong>Phone:</strong> +94 123 456 789</p>
+              <p><strong>Email:</strong> info@abcrestaurant.lk</p>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>© 2024 ABC Restaurant. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>       
+</body>
+
+<script>
+  function goToOfferPage(page) {
+      window.location.href = page;
+  }
+
+  function goTologinPage(page) {
+      window.location.href = page;
+  }
+</script>
+
+</html>
