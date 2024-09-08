@@ -21,7 +21,7 @@
                     <ul class="dropdown-content">
                         <li><a href="service.html">Services</a></li>
                         <li><a href="facility.html">Facilities</a></li>
-                        <li><a href="f&b.html">Food & Beverages</a></li>
+                        <li><a href="Displayf&b.php">Food & Beverages</a></li>
                     </ul>
                 </li>
                 <li><a href="contact.html">Contact Us</a></li>
@@ -46,7 +46,7 @@
         $search = mysqli_real_escape_string($conn, $_POST['Food_name']);
 
         // Prepare and execute the SQL query
-        $sql = "SELECT * FROM food WHERE Food_name LIKE '%$search%'";
+        $sql = "SELECT * FROM food_items WHERE name LIKE '%$search%'";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
@@ -61,7 +61,7 @@
     ?>
 
     <form method="post" action="Displayfood.php" class="search-container">
-    <button type="button" class="back-button" onclick="goToFoodPage('f&b.html')"><i class="fa-solid fa-arrow-left"></i> 
+    <button type="button" class="back-button" onclick="goToFoodPage('Displayf&b.php')"><i class="fa-solid fa-arrow-left"></i> 
         <span>Back</span>
     </button>
         <input type="text" name="Food_name" class="search-input" placeholder="Search...">
@@ -79,11 +79,11 @@
             <?php else: ?>
                 <?php foreach ($searchResults as $food): ?>
                     <div class="food-item">
-                        <img src="Image/<?php echo htmlspecialchars($food['Food_img']); ?>" alt="<?php echo htmlspecialchars($food['Food_name']); ?>">
+                        <img src="Image/<?php echo htmlspecialchars($food['image']); ?>" alt="<?php echo htmlspecialchars($food['name']); ?>">
                         <div class="food-info">
-                            <h2><?php echo htmlspecialchars($food['Food_name']); ?></h2>
-                            <p><?php echo htmlspecialchars($food['Food_description']); ?></p>
-                            <span class="price">RS.<?php echo htmlspecialchars($food['Price']); ?></span>
+                            <h2><?php echo htmlspecialchars($food['name']); ?></h2>
+                            <p><?php echo htmlspecialchars($food['description']); ?></p>
+                            <span class="price">RS.<?php echo htmlspecialchars($food['price']); ?></span>
                         </div>
                     </div>
                 <?php endforeach; ?>
