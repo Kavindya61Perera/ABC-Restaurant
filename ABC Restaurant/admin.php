@@ -1,6 +1,95 @@
 <?php
 include("connection.php"); // Ensure this path is correct
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['name'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+
+    // Handle image upload
+    $image = $_FILES['image']['name'];
+    $target = "uploads/" . basename($image);
+
+    // Check if the directory exists, and create it if it doesn't
+    if (!is_dir('uploads')) {
+        mkdir('uploads', 0755, true);
+    }
+
+    // Move the uploaded file to the target directory
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        // Insert the food item into the database
+        $sql = "INSERT INTO food_items (name, description, price, image) VALUES ('$name', '$description', '$price', '$image')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Food item added successfully.";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Failed to upload image.";
+    }
+}}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['submit-offer'])) {
+        // Retrieve form data
+        $offerTitle = $_POST['offer-title'];
+        $offerDescription = $_POST['offer-description'];
+
+        // Handle image upload
+        $offerImage = $_FILES['offer-image']['name'];
+        $target = "uploads/" . basename($offerImage);
+
+        // Check if the directory exists, and create it if it doesn't
+        if (!is_dir('uploads')) {
+            mkdir('uploads', 0755, true);
+        }
+
+        // Move the uploaded file to the target directory
+        if (move_uploaded_file($_FILES['offer-image']['tmp_name'], $target)) {
+            // Insert the offer into the database
+            $sql = "INSERT INTO offers (title, description, image) VALUES ('$offerTitle', '$offerDescription', '$offerImage')";
+            
+            // Assuming $conn is your database connection
+            if (mysqli_query($conn, $sql)) {
+                echo "Offer added successfully.";
+            } else {
+                echo "Error: " . mysqli_error($conn);
+            }
+        } else {
+            echo "Failed to upload image.";
+        }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['add_gallery_item'])) {
+        $caption = $_POST['caption'];
+
+        // Handle image upload
+        $image = $_FILES['image']['name'];
+        $target = "uploads/" . basename($image);
+
+        // Check if the directory exists, and create it if it doesn't
+        if (!is_dir('uploads')) {
+            mkdir('uploads', 0755, true);
+        }
+
+        // Move the uploaded file to the target directory
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+            // Insert the gallery item into the database
+            $sql = "INSERT INTO gallery (caption, image) VALUES ('$caption', '$image')";
+            if (mysqli_query($conn, $sql)) {
+                echo "Gallery item added successfully.";
+            } else {
+                echo "Error: " . mysqli_error($conn);
+            }
+        } else {
+            echo "Failed to upload image.";
+        }
+    }
+}
+
 // Fetch data for dynamic content if necessary
 // fetching users
 $sql_users = "SELECT * FROM user";
@@ -165,6 +254,9 @@ $conn->close();
             <li><a href="#reservations">Manage Reservations</a></li>
             <li><a href="#queries">Customer Queries</a></li>
             <li><a href="#users">Manage Users & Staff</a></li>
+            <li><a href="#food">Manage Food Items</a></li>
+            <li><a href="#offers">Manage offers </a></li>
+            <li><a href="#gallery">Manage Gallery Items</a></li>
             <li><a href="#reports">Reports</a></li>
             <li><a href="login.html">Logout</a></li>
         </ul>
@@ -376,6 +468,61 @@ $conn->close();
             </table>
             <br><br>
 
+            <section id="food">
+            <h1>Manage Food Items</h1>
+    <form  method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Food Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="price">Price (RS):</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button type="submit" name="name">Add Food Item</button>
+    </form>
+
+    <section id="offers">
+    <h1>Manage Offers</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="offer-title">Offer Title:</label>
+            <input type="text" id="offer-title" name="offer-title" required>
+        </div>
+        <div class="form-group">
+            <label for="offer-description">Description:</label>
+            <textarea id="offer-description" name="offer-description" rows="4" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="offer-image">Image:</label>
+            <input type="file" id="offer-image" name="offer-image" accept="image/*" required>
+        </div>
+        <button type="submit" name="submit-offer">Add Offer</button>
+    </form>
+</section>
+
+    <section id="gallery">
+    <h1>Manage Gallery Items</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="caption">Image Caption:</label>
+            <input type="text" id="caption" name="caption" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+        </div>
+        <button type="submit" name="add_gallery_item">Add Gallery Item</button>
+    </form>
+</section>
 
 <section id="reports">
     <h2>Reports</h2>
