@@ -62,7 +62,7 @@ require 'C:\wamp64\www\ABC2\phpmailer\src\PHPMailer.php';
 require 'C:\wamp64\www\ABC2\phpmailer\src\SMTP.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['email'], $_POST['query'], $_POST['response'])) {
+    if (isset($_POST['email'], $_POST['response'])) {
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
         
         $response_message = htmlspecialchars(trim($_POST['response']));
