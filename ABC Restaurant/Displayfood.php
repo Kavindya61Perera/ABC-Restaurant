@@ -15,7 +15,7 @@
         <nav>
             <ul>
                 <li><a href="home.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="gallery.php">Gallery</a></li>
                 <li class="dropdown">
                     <a href="#">Our Specialities &#9662;</a>
                     <ul class="dropdown-content">
@@ -28,7 +28,7 @@
             </ul>
         </nav>
         <div class="nav-buttons">
-            <button class="offer-button" onclick="goToOfferPage('offers.html')">Offers</button>
+            <button class="offer-button" onclick="goToOfferPage('offers.php')">Offers</button>
             <button class="login-button" onclick="goTologinPage('login.html')"><i class="fa-solid fa-user"></i> 
                 <span>Login</span>
             </button>
